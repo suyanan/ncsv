@@ -10,21 +10,21 @@ Welcome to ncsv's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: sv检测
 
-   calling/callingSV_process
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   anno/annoSV_process
+   callingsv
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: sv注释
 
-   filter/filterSV_process
+   annosv
+
+.. toctree::
+   :maxdepth: 2
+   :caption: sv过滤
+
+   filtersv
 
 Indices and tables
 ==================
