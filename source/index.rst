@@ -6,23 +6,23 @@
 Welcome to ncsv's documentation!
 ================================
 
-该文档为 ncsv (NoahCare SV) 的说明文档
+This is the ncsv's documentation. (NoahCare SV)
 
 .. toctree::
    :maxdepth: 2
-   :caption: sv检测
+   :caption: sv calling
 
    callingsv
 
 .. toctree::
    :maxdepth: 2
-   :caption: sv注释
+   :caption: sv anno
 
    annosv
 
 .. toctree::
    :maxdepth: 2
-   :caption: sv过滤
+   :caption: sv filter
 
    filtersv
 
