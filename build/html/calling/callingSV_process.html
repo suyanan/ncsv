@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ncsv &mdash; ncsv 1.0.0 beta documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="ncsv 1.0.0 beta documentation" href="../index.html"/>
+        <link rel="prev" title="Welcome to ncsv’s documentation!" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> ncsv</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ncsv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">ncsv介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ncsv的检出原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">ncsv使用</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ncsv</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>ncsv</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/calling/callingSV_process.rst.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="ncsv">
+<h1>ncsv<a class="headerlink" href="#ncsv" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>ncsv介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>SV的融合类型包括：</p>
+<blockquote>
+<div><ul class="simple">
+<li>重复(Duplication, DUP)</li>
+<li>删除(Deletion, DEL)</li>
+<li>倒位(Inversion, INV)</li>
+<li>跨染色体融合(Inter-Chromosomal Translocation, CTX)</li>
+<li>易位(Intra-Chromosomal Translocation, ITX)</li>
+</ul>
+</div></blockquote>
+<p>ncsv的检出类型包括：</p>
+<blockquote>
+<div><ul class="simple">
+<li>DUP/ITX</li>
+<li>DEL/ITX</li>
+<li>INV</li>
+<li>CTX-1（顺式CTX）</li>
+<li>CTX-2（反式CTX）</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>ncsv的检出原理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>ncsv检测是基于SR、SU、DP三种类型特征的数据，经过序列组装及序列重比对来确定实际断点的sv检测算法。</p>
+<div class="section" id="id3">
+<h3>ncsv名词解释<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>测序以及比对的相关名词<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>template(模板链)</dt>
+<dd>经过各种样本前处理（如酶切/超声打断、PCR等）后，测序仪实际进行测序的数据。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>read</dt>
+<dd>读段，测序仪产生的测序原始数据经过比对后的数据。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>read_len</dt>
+<dd>读段长度，在一次测序中通常为固定值，常见值为50,75</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>softclip</dt>
+<dd>若read的部分序列很好的比对到了基因组，但是剩余部分无法完好的比对到该区域（可能产生复杂的Indel），则会将该剩余部分标记为softclip(简称sc)。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>读段质量值</dt>
+<dd>指经bwa比对产生的读段的质量值属性。质量值越高，代表该比对的可信度越高，质量值较低的原因通常是该比对位于重复区域或者比对中带有较复杂的插入缺失。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PE(双端测序)</dt>
+<dd>PairEnd Sequencing，测序仪从模板链两端分别测序，对同一个 模板链 会产生2个read数据，分别命名为read1和read2。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>isize</dt>
+<dd>bam的插入片段长度，或称为模板链长度，即read对应的模板链的长度。</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="sv">
+<h4>sv分析的相关名词<a class="headerlink" href="#sv" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>SR</dt>
+<dd>Split Reads，SV判断的一种支持数据类型，其来源于序列比对（bwa）产生read的softclip部分。
+softclip的产生来源通常有序列插入、融合、比对错误等，所以可以作为sv的一种潜在支持进行分析。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SU</dt>
+<dd>Single Unmap，SV判断的一种支持数据类型，其来源于序列比对（bwa）产生的未匹配（unmap）序列。
+unmap序列的产生原因通常是因为该部分带有难以解析的插入、融合序列，所以可以作为sv的一种潜在支持进行分析。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DP</dt>
+<dd>Discordant Pair，SV判断的一种支持数据类型，其指的是序列比对中模板链长度异常( isize &gt; isize_max )的读段对。
+DP产生的原因通常是由于序列融合，导致读段两侧分别比对到基因相距较远的两部分。若DP两侧的读段质量值够高，则可以作为融合的最直接证据。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>isize_max</dt>
+<dd>该样本测序的正常模板链长度最大值，其值为isize排序并剔除极端值(&lt;1%，或&gt;99%)后的 isize均值 + 3倍方差</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>read_inner_span</dt>
+<dd>自创变量，用于度量在给定断点位置可能存在的DP支持读段距离断点的最大距离，其值为 isize_max - 1.5* read_len 。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>模板链覆盖数</dt>
+<dd>跨越给定断点的所有正常模板链（不支持任何变异）的计数，相比于正常的bam位点深度，会增加那些位点在配对read中间的模板链。</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>ncsv使用<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Welcome to ncsv’s documentation!"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, GenePlus.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0.0 beta',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
