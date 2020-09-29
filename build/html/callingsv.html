@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>calling sv &mdash; ncsv 1.0.0 beta documentation</title>
+  <title>ncsv介绍 &mdash; ncsv 1.0.0 beta documentation</title>
   
 
   
@@ -68,10 +68,14 @@
           
               <p class="caption"><span class="caption-text">sv calling</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">calling sv</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ncsv">ncsv介绍</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">ncsv检出原理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">ncsv使用说明</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ncsv介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">ncsv检出原理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">ncsv名词解释</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id4">ncsv使用说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id5">ncsv安装环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">ncsv调用方法</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +110,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>calling sv</li>
+    <li>ncsv介绍</li>
       <li class="wy-breadcrumbs-aside">
         
           <a href="_sources/callingsv.rst.txt" rel="nofollow"> View page source</a>
@@ -117,10 +121,8 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="calling-sv">
-<h1>calling sv<a class="headerlink" href="#calling-sv" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ncsv">
-<h2>ncsv介绍<a class="headerlink" href="#ncsv" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="ncsv">
+<h1>ncsv介绍<a class="headerlink" href="#ncsv" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
 <dt>SV的融合类型包括：</dt>
 <dd><ul class="first last simple">
@@ -143,13 +145,13 @@
 </dl>
 </div>
 <div class="section" id="id1">
-<h2>ncsv检出原理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h1>ncsv检出原理<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div>ncsv检测是基于SR、SU、DP三种类型特征的数据，经过序列组装及序列重比对来确定实际断点的sv检测算法。</div></blockquote>
 <div class="section" id="id2">
-<h3>ncsv名词解释<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h2>ncsv名词解释<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h4>测序以及比对的相关名词<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h3>测序以及比对的相关名词<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>template(模板链)</dt>
@@ -189,7 +191,7 @@
 </ul>
 </div>
 <div class="section" id="sv">
-<h4>sv分析的相关名词<a class="headerlink" href="#sv" title="Permalink to this headline">¶</a></h4>
+<h3>sv分析的相关名词<a class="headerlink" href="#sv" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>SR</dt>
@@ -229,9 +231,9 @@ DP产生的原因通常是由于序列融合，导致读段两侧分别比对到
 </div>
 </div>
 <div class="section" id="id4">
-<h2>ncsv使用说明<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h1>ncsv使用说明<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id5">
-<h3>ncsv安装环境<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h2>ncsv安装环境<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>操作系统：Linux</li>
@@ -242,16 +244,9 @@ DP产生的原因通常是由于序列融合，导致读段两侧分别比对到
 </div></blockquote>
 </div>
 <div class="section" id="id6">
-<h3>ncsv调用方法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h2>ncsv调用方法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>NcSV提供一个外部调用脚本wrapper_run_sv.py，调用方式见下</div></blockquote>
-<div class="section" id="id7">
-<h4>参数说明<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="id8">
-<h4>调用示例<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
+<div>NcSV提供一个外部调用脚本wrapper_run_sv.py</div></blockquote>
 </div>
 </div>
 
