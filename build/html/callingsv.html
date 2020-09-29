@@ -247,15 +247,9 @@ DP产生的原因通常是由于序列融合，导致读段两侧分别比对到
 <div>NcSV提供一个外部调用脚本wrapper_run_sv.py，调用方式见下</div></blockquote>
 <div class="section" id="id7">
 <h4>参数说明<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><p>-r 参数指定参考序列文件。推荐使用 无chr 前缀的参考序列文件，不保证完全兼容 带有chr前缀的参考序列文件</p>
-<p>-H 参数指定的热点区域注释文件。该文件由 trans_sv_hotregion.py 生成，文件位置为 BNC/program/NoahCare/config/nc_*/sv/hotregion.bed.gz</p>
-</div></blockquote>
 </div>
 <div class="section" id="id8">
 <h4>调用示例<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div>python PATH/TO/wrapper_run_sv.py -n 8 -t TMPPATH -r REFERENCE  -o HOTREGION -f HOTFUSION  -x TRANSCRIPT.b</div></blockquote>
 </div>
 </div>
 </div>

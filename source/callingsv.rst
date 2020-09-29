@@ -82,12 +82,13 @@ ncsv调用方法
 
     NcSV提供一个外部调用脚本wrapper_run_sv.py，调用方式见下
 
-.. usage:
-    wrapper_run_sv.py [-h] -t TMP -r REF -H HOTREGION [-w BWA]
+.. code-block:: sh
+    usage: wrapper_run_sv.py [-h] -t TMP -r REF -H HOTREGION [-w BWA]
                     [-s SAMTOOLS] [-n NUMTHREADS] [-c CTRLOUT]
                     [-S SAMPLE] [-d] [--bamstat BAMSTAT]
                     [--hotsv HOTSV]
                     outfile bamt [bamn]
+    
     positional arguments:
 
     outfile               output file, csv format
@@ -118,12 +119,13 @@ ncsv调用方法
 参数说明
 :::::::::
 
-    -r 参数指定参考序列文件。推荐使用 无chr 前缀的参考序列文件，不保证完全兼容 带有chr前缀的参考序列文件
-
-    -H 参数指定的热点区域注释文件。该文件由 trans_sv_hotregion.py 生成，文件位置为 BNC/program/NoahCare/config/nc_*/sv/hotregion.bed.gz
+.. list-table::
+    * -r 参数指定参考序列文件。推荐使用 无chr 前缀的参考序列文件，不保证完全兼容 带有chr前缀的参考序列文件
+    * -H 参数指定的热点区域注释文件。该文件由 trans_sv_hotregion.py 生成，文件位置为 BNC/program/NoahCare/config/nc_*/sv/hotregion.bed.gz
 
 调用示例
 :::::::::
 
+.. code-block:: sh
     python PATH/TO/wrapper_run_sv.py -n 8 -t TMPPATH -r REFERENCE  -o HOTREGION -f HOTFUSION  -x TRANSCRIPT.b
 
