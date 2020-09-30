@@ -16,15 +16,10 @@ This is the ncsv's documentation. (NoahCare SV)
 
 .. toctree::
    :maxdepth: 2
-   :caption: sv anno
+   :caption: sv tools
 
-   annosv
+   svtools
 
-.. toctree::
-   :maxdepth: 2
-   :caption: sv filter
-
-   filtersv
 
 Indices and tables
 ==================
